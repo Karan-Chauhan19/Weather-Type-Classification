@@ -8,7 +8,7 @@ from setuptools import  setup, find_packages
 setup(
     name='Project',  # project name
     version='1.0',  # version number
-    description='Classify user behavior based on mobile data',  # description of the project
+    description='A Synthetic Weather Classification Project',  # description of the project
     packages = find_packages(),  # find all packages
     author='Karan-Chauhan' ,# author of the package
     author_email='kc879022@gmail.com', # email of the author
