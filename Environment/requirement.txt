@@ -1,0 +1,9 @@
+Required Libray list
+Numpy
+Pandas
+Matplotlob
+Seaborn
+Scikit-learn
+Scipy
+Plotly
+Mlxtend
