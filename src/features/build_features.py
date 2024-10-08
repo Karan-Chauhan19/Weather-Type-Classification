@@ -12,11 +12,9 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 import seaborn as sns
-from sklearn.preprocessing import StandardScaler,OneHotEncoder
+from sklearn.preprocessing import StandardScaler,OneHotEncoder,LabelEncoder
 
 class Featureengineering :
-    def __init__(self,df) :
-        self.df = df
 
     def clean_data(self) :
         #Load data
@@ -38,16 +36,20 @@ class Featureengineering :
 
         return data
 
-    def get_clean_data(self,df) :
+    def get_clean_data(self) :
         df = Featureengineering().clean_data()
         #Covert Categorical column to numerical column using OneHotEncoder
         ohe = OneHotEncoder()
-        df_new = ohe.fit_transform(df[['Cloud_Cover','Season','Location']])
+        df_1 = ohe.fit_transform(df[['Cloud_Cover','Season','Location']]).toarray()
+        df_new = pd.concat([df.drop(columns=['Cloud_Cover','Season','Location','WeatherType'], axis=1), pd.DataFrame(df_1, columns=ohe.get_feature_names_out(['Cloud_Cover','Season','Location']))], axis=1)
 
         scaler = StandardScaler()
-        df_update = scaler.fit_transform(df.drop(columns='WeatherType'))
+        df_update = scaler.fit_transform(df_new)
+        scaled_df = pd.DataFrame(df_update, columns=df_new.columns)
 
-        df1 = pd.DataFrame(df_update,columns=['Temperature','Humidity','Wind_Speed','Precipitation (%)','Cloud_Cover',
-                                              'Atmospheric_Pressure','UV_Index','Season','Visibility (km)','Location'])
-        return df1,df['WeatherType']
+        #Use labelencoder for output column
+        le = LabelEncoder()
+        y = le.fit_transform(df['WeatherType'])
+        labeled = pd.DataFrame(y,columns=['WeatherType'])
+        return pd.concat([scaled_df,labeled],axis=1)
         
