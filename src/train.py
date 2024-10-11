@@ -23,7 +23,7 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=
 
 model_pipeline = Pipeline(steps=[
     ('preprocessor',preprocessor),
-    ('classifier',RandomForestClassifier())
+    ('classifier',RandomForestClassifier(n_estimators=20,max_samples=0.5,max_features=0.6,max_depth=8))
 ])
 
 model_pipeline.fit(X_train,y_train)
