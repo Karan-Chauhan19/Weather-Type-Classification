@@ -12,7 +12,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 import seaborn as sns
-from sklearn.preprocessing import StandardScaler,OneHotEncoder,LabelEncoder
+from sklearn.preprocessing import StandardScaler,OneHotEncoder
+from sklearn.compose import ColumnTransformer
 
 class Featureengineering :
 
@@ -24,7 +25,7 @@ class Featureengineering :
         data.rename(columns={'Wind Speed':'Wind_Speed','Cloud Cover':'Cloud_Cover','Atmospheric Pressure':'Atmospheric_Pressure'
                    ,'UV Index':'UV_Index','Weather Type':'WeatherType'},inplace=True)
         
-        #Replace outliers from Temperature and Atmospheric pressure column using capping method
+        #Replace outliers in Temperature and Atmospheric pressure column using capping method
         upper_limit = data['Temperature'].mean() + 3*data['Temperature'].std()
         lower_limit = data['Temperature'].mean() - 3*data['Temperature'].std()
         data['Temperature'] = np.where(data['Temperature']>upper_limit,upper_limit
@@ -38,18 +39,13 @@ class Featureengineering :
 
     def get_clean_data(self) :
         df = Featureengineering().clean_data()
-        #Covert Categorical column to numerical column using OneHotEncoder
-        ohe = OneHotEncoder()
-        df_1 = ohe.fit_transform(df[['Cloud_Cover','Season','Location']]).toarray()
-        df_new = pd.concat([df.drop(columns=['Cloud_Cover','Season','Location','WeatherType'], axis=1), pd.DataFrame(df_1, columns=ohe.get_feature_names_out(['Cloud_Cover','Season','Location']))], axis=1)
+        categorical_column = ['Cloud_Cover','Season','Location']
+        numerical_column = ['Temperature', 'Humidity', 'Wind_Speed', 'Precipitation (%)','Atmospheric_Pressure', 'UV_Index','Visibility (km)']
+        #For feature engineering we use columntransformer
+        preprocessor = ColumnTransformer(transformers=[
+            ('trf1',OneHotEncoder(drop='first'),categorical_column),
+            ('trf2',StandardScaler(),numerical_column)
+        ])
 
-        scaler = StandardScaler()
-        df_update = scaler.fit_transform(df_new)
-        scaled_df = pd.DataFrame(df_update, columns=df_new.columns)
-
-        #Use labelencoder for output column
-        le = LabelEncoder()
-        y = le.fit_transform(df['WeatherType'])
-        labeled = pd.DataFrame(y,columns=['WeatherType'])
-        return pd.concat([scaled_df,labeled],axis=1)
+        return df,preprocessor
         
