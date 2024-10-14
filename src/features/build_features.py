@@ -39,7 +39,7 @@ class Featureengineering :
 
     def get_clean_data(self) :
         df = Featureengineering().clean_data()
-        categorical_column = ['Cloud_Cover','Season','Location']
+        categorical_column = ['Cloud_Cover','Season']
         numerical_column = ['Temperature', 'Humidity', 'Wind_Speed', 'Precipitation (%)','Atmospheric_Pressure', 'UV_Index','Visibility (km)']
         #For feature engineering we use columntransformer
         preprocessor = ColumnTransformer(transformers=[
