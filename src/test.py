@@ -1,3 +1,11 @@
+'''
+Author       : Karan Chauhan
+github       : @Karan-Chauhan19
+Email        : kc879022@gmail.com
+Organization : L.J University
+'''
+
+
 import pandas as pd
 import numpy as np
 from train import *
