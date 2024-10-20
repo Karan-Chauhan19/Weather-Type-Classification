@@ -45,10 +45,10 @@ class ModelTrain :
         Selected_Algorithm = object
 
         if selected_option == 'Random Forest Classifier' :
-            Selected_Algorithm = RandomForestClassifier()
+            Selected_Algorithm = RandomForestClassifier(max_features=0.2, max_samples=0.5, n_estimators=120)
             Selected_Algorithm.fit(transform_data,y)
         elif selected_option == 'Decision Tree' :
-            Selected_Algorithm = DecisionTreeClassifier()
+            Selected_Algorithm = DecisionTreeClassifier(max_depth=4,max_leaf_nodes=5,min_samples_split=50)
             Selected_Algorithm.fit(transform_data,y)
         elif selected_option == 'Logistic Regression' :
             Selected_Algorithm = LogisticRegression()
