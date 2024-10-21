@@ -1,9 +1,8 @@
 Required Libray list
 Numpy
 Pandas
-Matplotlob
+Matplotlib
 Seaborn
 Scikit-learn
 Scipy
-Plotly
-Mlxtend
+
