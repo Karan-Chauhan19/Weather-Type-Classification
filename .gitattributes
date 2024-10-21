@@ -1,3 +1,4 @@
 src/__pycache__/test.cpython-312.pyc filter=lfs diff=lfs merge=lfs -text
 src/__pycache__/train.cpython-312.pyc filter=lfs diff=lfs merge=lfs -text
 src/features/__pycache__/build_features.cpython-312.pyc filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text
