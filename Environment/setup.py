@@ -1,6 +1,6 @@
 '''
-author name  : Karan Chauhan
-github       : @karan190806
+Author : Karan Chauhan
+Github : Karan-Chauhan19
 Organization : L.J University
 '''
 from setuptools import  setup, find_packages
