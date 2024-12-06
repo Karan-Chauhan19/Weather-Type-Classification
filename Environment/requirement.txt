@@ -1,8 +1,7 @@
-Required Libray list
-Numpy
-Pandas
-Matplotlib
-Seaborn
-Scikit-learn
-Scipy
+numpy
+pandas
+matplotlib
+seaborn
+scikit-learn
+scipy
 
