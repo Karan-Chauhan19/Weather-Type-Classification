@@ -1,19 +1,13 @@
 '''
-Author       : Karan Chauhan
-github       : @Karan-Chauhan19
-Email        : kc879022@gmail.com
-Organization : L.J University
+author: Karan Chauhan
+github: @Karan-Chauhan19
+organization: L.J University
 '''
 
-#feature Engineering
-#Import libraries
-
-import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt 
-import seaborn as sns
-from sklearn.preprocessing import StandardScaler,OneHotEncoder
+import pandas as pd 
 from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler,OneHotEncoder
 
 class Featureengineering :
 
