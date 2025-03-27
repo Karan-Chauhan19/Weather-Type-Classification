@@ -1,8 +1,0 @@
-Required Libray list
-Numpy
-Pandas
-Matplotlib
-Seaborn
-Scikit-learn
-Scipy
-
