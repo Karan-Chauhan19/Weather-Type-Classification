@@ -1,30 +1,20 @@
 '''
-Author       : Karan Chauhan
-github       : @Karan-Chauhan19
-Email        : kc879022@gmail.com
-Organization : L.J University
+author: Karan Chauhan
+github: @Karan-Chauhan19
+organization: L.J University
 '''
 
-import pandas as pd
-import numpy as np
+import streamlit as st
+from sklearn.svm import SVC
 from features.build_features import *
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier,BaggingClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import classification_report,accuracy_score
 from sklearn.pipeline import Pipeline
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.svm import SVC
-import streamlit as st
-
-
-
+from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 
 class ModelTrain :
     def __init__(self) :
         pass
-
-    
 
     def train_model(self) :
 
@@ -32,7 +22,6 @@ class ModelTrain :
         df,preprocessor = data.get_clean_data()
         X = df.drop(columns=['WeatherType','Location'])
         y = df.iloc[:,-1]
-        # X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,random_state=42)
 
         model_pipeline = Pipeline(steps=[
             ('preprocessor',preprocessor)

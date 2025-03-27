@@ -1,45 +1,31 @@
 '''
-Author       : Karan Chauhan
-github       : @Karan-Chauhan19
-Organization : L.J University
+author: Karan Chauhan
+github: @Karan-Chauhan19
+organization: L.J University
 '''
-
-
-
-
 
 import http
 import streamlit as st
 from train import *
 from test import *
 
-
 # Centering the title using HTML and CSS
-
-   
 class Main:
     def __init__(self) -> None:
         pass
 
     def run(self):
-        
         st.write()
         st.write()
         
-
         t = TestDataPreprocessing()
         t.testing()
 
-       
         st.markdown("[GitHub](https://github.com/Karan-Chauhan19/Weather-Type-Classification.git) | <a href='https://www.linkedin.com/in/karan-chauhan-a511a4293' target='_blank'>Linkedin</a>",unsafe_allow_html=True)
         
-
         # Add a LinkedIn profile hyperlink using HTML
         st.markdown("", unsafe_allow_html=True)
 
-
-
-        
         # Add copyright notice at the bottom
         st.markdown("<hr>", unsafe_allow_html=True)  # Horizontal line to separate content
         st.markdown(
@@ -47,11 +33,7 @@ class Main:
             unsafe_allow_html=True
         )
 
-        
-if  __name__ == "__main__":
-
-    
-    
+if  __name__ == "__main__":    
     st.markdown("<h1 style='text-align: center;'><b>Weather Type classification on Environmental Dataset</b></h1>", unsafe_allow_html=True)
 
     st.markdown("<p ><b> - About this project  :</b></p>",unsafe_allow_html=True)

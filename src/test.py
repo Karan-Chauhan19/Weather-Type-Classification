@@ -1,21 +1,19 @@
 '''
-Author       : Karan Chauhan
-github       : @Karan-Chauhan19
-Email        : kc879022@gmail.com
-Organization : L.J University
+author: Karan Chauhan
+github: @Karan-Chauhan19
+organization: L.J University
 '''
 
-
-import pandas as pd
 import numpy as np
 from train import *
+import pandas as pd
 import streamlit as st
 
 class TestDataPreprocessing :
     def __init__(self) :
         pass
-    def testing(self) :
 
+    def testing(self) :
         st.sidebar.title("Select Parameter ")
         mt = ModelTrain()
         selected_algorithm,model_pipeline =  mt.train_model()
